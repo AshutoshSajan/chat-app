@@ -1,0 +1,5 @@
+.chat-messages {
+	max-height: 400px;
+	min-height: 400px;
+	overflow: scroll;
+}
