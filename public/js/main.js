@@ -1,17 +1,16 @@
 const chatForm = document.getElementById("chat-form");
 const chatMsgDiv = document.querySelector(".chat-messages");
 const socket = io();
+
 const roomName = document.getElementById("roomName");
 const usersList = document.getElementById("users");
 
-const rand = () => Math.floor(Math.random() * 5000);
 // get username and chatroom from url
-const { username, room } = {
-	username: "sam" + rand(),
-	room: "js"
-};
+const { username, room } = Qs.parse(location.search, {
+	ignoreQueryPrefix: true
+});
 
-// console.log(username, room);
+console.log(username, room);
 
 // join chatroom
 socket.emit("joinRoom", { username, room });
