@@ -7,27 +7,30 @@
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-  <h1>chat</h1>
-
   <div class="main">
     <div class="room-info">
+      <h2>chat Room</h2>
       <h2 id="roomName"></h2>
+
+      <h2>Online Users</h2>
       <ul id="users"></ul>
     </div>
     
-    <div class="chat-messages"></div>
+    <div>
+      <div class="chat-messages"></div>
 
-    <div id="chat-msg-div">
-      <form action="" id="chat-form">
-        <input
-          id='msg'
-          type="text"
-          placeholder="enter chat message"
-          autocomplete="off"
-          required
-          >
-        <button type="submit" class='btn'>send</button>
-      </form>
+      <div id="chat-msg-div">
+        <form action="" id="chat-form">
+          <input
+            id='msg'
+            type="text"
+            placeholder="enter chat message"
+            autocomplete="off"
+            required
+            >
+          <button type="submit" class='btn'>send</button>
+        </form>
+      </div>
     </div>
   </div>
   

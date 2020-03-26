@@ -1,5 +1,31 @@
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 .chat-messages {
 	max-height: 400px;
 	min-height: 400px;
-	overflow: scroll;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+	/* scrollbar-width: none; */
+	scrollbar-width: thin;
+}
+
+.main {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.msg-info {
+	background: cyan;
+	display: inline-block;
+}
+
+.current-user {
+	display: flex;
+	justify-content: flex-end;
 }

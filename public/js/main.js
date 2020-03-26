@@ -45,10 +45,13 @@ chatForm.addEventListener("submit", e => {
 
 function diaplayMessage(message) {
 	const div = document.createElement("div");
+	div.className = message.username === username ? "current-user" : "";
 
 	div.innerHTML += `
-    <p>${message.username} <time>${message.time}</time></p>
-    <p class='msg'>${message.text}</p>
+		<div>
+			<p class="msg-info">From : ${message.username} at <time>${message.time}</time></p>
+			<p class='msg-text'>${message.text}</p>
+		</div>
   `;
 
 	chatMsgDiv.appendChild(div);
