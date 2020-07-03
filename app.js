@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const path = require("path");
@@ -6,17 +7,23 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 const formatMsg = require("./utils/message");
+const Chat = require("./models/Chat");
+
+const db = require("./config/connectDb");
+db();
+
 const {
 	userJoin,
 	getCurrnetUser,
 	userLeave,
-	getRoomUsers
+	getRoomUsers,
 } = require("./utils/users");
+const { model } = require("./models/Chat");
 
 const bot = "chatBot";
 app.use(express.static(path.join(__dirname, "public")));
 
-io.on("connection", socket => {
+io.on("connection", (socket) => {
 	socket.on("joinRoom", ({ username, room }) => {
 		const user = userJoin(socket.id, username, room);
 		socket.join(user.room);
@@ -37,7 +44,7 @@ io.on("connection", socket => {
 		// send users and room info to client
 		io.to(user.room).emit("roomUsers", {
 			room: user.room,
-			users: getRoomUsers(user.room)
+			users: getRoomUsers(user.room),
 		});
 	});
 
@@ -62,8 +69,10 @@ io.on("connection", socket => {
 	// });
 
 	// v2 after implimenting rooms functionality
-	socket.on("chatMsg", msg => {
+	socket.on("chatMsg", async (msg) => {
 		const user = getCurrnetUser(socket.id);
+		const chat = await Chat.create({ username: user.username, msg });
+		await chat.save();
 		io.to(user.room).emit("message", formatMsg(user.username, msg));
 	});
 
@@ -87,7 +96,7 @@ io.on("connection", socket => {
 			// send users and rooms info
 			io.to(user.room).emit("roomUsers", {
 				room: user.room,
-				users: getRoomUsers(user.room)
+				users: getRoomUsers(user.room),
 			});
 		}
 	});
