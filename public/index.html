@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form action="chat.html" id="join-chat-form">
-    <input
-      name="username"
-      id='username'
-      type="text"
-      placeholder="username"
-      autocomplete="off"
-      required
-      >
-      <br>
-      <select name="room" id="" class="message">
-        <option value="js">js</option>
-        <option value="python">python</option>
-        <option value="rails">rails</option>
-        <option value="node">node</option>
-      </select>
-      <br>
-      <button type="submit" class='btn'>join chat</button>
-  </form>
-  <script src="socket.io/socket.io.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<form action="chat.html" id="join-chat-form">
+			<!-- <form action="new-chat.html" id="join-chat-form"> -->
+			<input
+				name="username"
+				id="username"
+				type="text"
+				placeholder="username"
+				autocomplete="off"
+				required
+			/>
+			<br />
+			<select name="room" id="" class="message">
+				<option value="js">js</option>
+				<option value="python">python</option>
+				<option value="rails">rails</option>
+				<option value="node">node</option>
+			</select>
+			<br />
+			<button type="submit" class="btn">join chat</button>
+		</form>
+		<script src="socket.io/socket.io.js"></script>
+	</body>
 </html>
